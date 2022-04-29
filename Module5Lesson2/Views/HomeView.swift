@@ -16,19 +16,19 @@ struct HomeView: View {
             NavigationView {
                 ScrollView() {
                     LazyVStack(alignment: .leading, spacing: 2) {
-                        Text("Get Started!").bold()
                         Text("What would you like to do Today?")
                     }.padding().font(Font.custom("Avenir Heavy", size: 16))
                     VStack {
                         ForEach(model.modules) {mod in
-                            Card(mod: mod, type: "content")
-                            Card(mod: mod, type: "test")
+                            NavigationLink(destination:LessonListView(lessons: mod.content.lessons), label: {Card(mod: mod, type: "content")})
+                            NavigationLink(destination:LessonListView(lessons: mod.content.lessons), label: {Card(mod: mod, type: "test")})
                         }
                     }
                     Spacer()
                     
                     
-                }
+                }.navigationTitle("Get Started")
+                    .accentColor(.black)
             }
 
 
