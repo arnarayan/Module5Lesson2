@@ -10,6 +10,8 @@
 		000BDC54281A37B600630134 /* LessonLinkCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000BDC53281A37B600630134 /* LessonLinkCard.swift */; };
 		000BDC56281A3D2F00630134 /* LessonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000BDC55281A3D2F00630134 /* LessonListView.swift */; };
 		000BDC58281C51AD00630134 /* LessonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000BDC57281C51AD00630134 /* LessonDetailView.swift */; };
+		000BDC5B281C57B200630134 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000BDC5A281C57B200630134 /* AVKit.framework */; };
+		000BDC5D281D8E6D00630134 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000BDC5C281D8E6D00630134 /* Constants.swift */; };
 		00294ED2280FA8C300588996 /* Module5Lesson2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00294ED1280FA8C300588996 /* Module5Lesson2App.swift */; };
 		00294ED4280FA8C300588996 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00294ED3280FA8C300588996 /* HomeView.swift */; };
 		00294ED6280FA8C400588996 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00294ED5280FA8C400588996 /* Assets.xcassets */; };
@@ -26,6 +28,8 @@
 		000BDC53281A37B600630134 /* LessonLinkCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonLinkCard.swift; sourceTree = "<group>"; };
 		000BDC55281A3D2F00630134 /* LessonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonListView.swift; sourceTree = "<group>"; };
 		000BDC57281C51AD00630134 /* LessonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailView.swift; sourceTree = "<group>"; };
+		000BDC5A281C57B200630134 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		000BDC5C281D8E6D00630134 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		00294ECE280FA8C300588996 /* Module5Lesson2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Module5Lesson2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00294ED1280FA8C300588996 /* Module5Lesson2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module5Lesson2App.swift; sourceTree = "<group>"; };
 		00294ED3280FA8C300588996 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -44,17 +48,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				000BDC5B281C57B200630134 /* AVKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		000BDC59281C57B200630134 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				000BDC5A281C57B200630134 /* AVKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		00294EC5280FA8C300588996 = {
 			isa = PBXGroup;
 			children = (
 				00294ED0280FA8C300588996 /* Module5Lesson2 */,
 				00294ECF280FA8C300588996 /* Products */,
+				000BDC59281C57B200630134 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,9 +118,9 @@
 			children = (
 				00294ED3280FA8C300588996 /* HomeView.swift */,
 				000BDC55281A3D2F00630134 /* LessonListView.swift */,
+				000BDC57281C51AD00630134 /* LessonDetailView.swift */,
 				0044885A2813AB1400640D0A /* Card.swift */,
 				000BDC53281A37B600630134 /* LessonLinkCard.swift */,
-				000BDC57281C51AD00630134 /* LessonDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -139,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				00294EDF280FA9CD00588996 /* Data */,
+				000BDC5C281D8E6D00630134 /* Constants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -227,6 +242,7 @@
 				0044885B2813AB1400640D0A /* Card.swift in Sources */,
 				000BDC56281A3D2F00630134 /* LessonListView.swift in Sources */,
 				00294ED2280FA8C300588996 /* Module5Lesson2App.swift in Sources */,
+				000BDC5D281D8E6D00630134 /* Constants.swift in Sources */,
 				00294EE7280FAC4300588996 /* ContentViewModel.swift in Sources */,
 				00294EED280FBC6C00588996 /* Lesson.swift in Sources */,
 				000BDC54281A37B600630134 /* LessonLinkCard.swift in Sources */,

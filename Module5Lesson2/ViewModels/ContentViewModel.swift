@@ -9,6 +9,8 @@ import Foundation
 
 class ContentModel: ObservableObject {
     @Published var modules = [Module]()
+    @Published var nextLesson: Lesson?
+    @Published var currentLesson: Lesson?
     
     var style: Data?
     
@@ -16,6 +18,16 @@ class ContentModel: ObservableObject {
     init() {
         self.modules = DataService.getLocalData()
         self.style = DataService.getStyleData()
+        self.nextLesson = Lesson.NullLesson
+        self.currentLesson = Lesson.NullLesson
+    }
+    
+    func setNextLesson(lesson: Lesson) {
+        self.nextLesson = lesson
+    }
+    
+    func setCurrentLesson(lesson: Lesson) {
+        self.currentLesson = lesson
     }
     
     

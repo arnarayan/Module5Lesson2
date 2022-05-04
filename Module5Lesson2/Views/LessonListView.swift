@@ -9,18 +9,38 @@ import SwiftUI
 
 struct LessonListView: View {
     
+    @EnvironmentObject var viewModel: ContentModel
     @State var lessons: [Lesson]
     
     var body: some View {
-        NavigationView {
             ScrollView() {
                 VStack(spacing:0) {
-                    ForEach(lessons) {lesson in
-                        LessonLinkCard(lesson: lesson)
+                    ForEach(0..<lessons.count) {index in
+                        NavigationLink(
+                            destination:
+                                LessonDetailView()
+                                .onAppear(perform: {
+                                    viewModel.setCurrentLesson(lesson: lessons[index])
+                                    if (index < lessons.count-1) {
+                                        viewModel.setNextLesson(lesson: lessons[index+1])
+                                        
+                                    }
+                                    else {
+                                        
+                                        viewModel.setNextLesson(lesson: Lesson.NullLesson)
+                                        
+                                    }
+                                
+                                }),
+                            label: {
+                                
+                                LessonLinkCard(lesson: lessons[index])
+                                
+                            })
                     }
                 }
             }.navigationTitle("Learn Swift")
-        }
+                .accentColor(.black)
     }
 }
 
@@ -32,6 +52,6 @@ struct LessonListView_Previews: PreviewProvider {
             video: "http://www.microsoft.com",
             duration: "17 minutes",
             explanation: "something else"
-        )])
+        )]).environmentObject(ContentModel())
     }
 }

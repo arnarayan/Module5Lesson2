@@ -18,14 +18,14 @@ struct LessonLinkCard: View {
                 .shadow(color: .gray, radius: 10)
                 .aspectRatio(CGSize(width: 335, height: 100), contentMode: .fit)
             HStack(spacing:20) {
-                Text("\(self.lesson.id + 1)").font(Font.title)
+                Text("\(self.lesson.id! + 1)").font(Font.title)
                 
                 VStack(alignment: .leading, spacing: 20) {
-                    Text("\(self.lesson.title)").bold()
+                    Text("\(self.lesson.title!)").bold()
                     HStack {
                         
                         Text("Video - ")
-                        Text("\(self.lesson.duration)").font(.caption)
+                        Text("\(self.lesson.duration!)").font(.caption)
                     }
                     
                 }
@@ -33,7 +33,7 @@ struct LessonLinkCard: View {
 
 
             
-        }.navigationTitle("Learn something huh?").padding()
+        }
     }
 }
 

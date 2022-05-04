@@ -25,11 +25,12 @@ struct Content: Identifiable, Decodable {
 }
 
 struct Lesson: Identifiable, Decodable {
-    var id: Int
-    var title: String
-    var video: String
-    var duration: String
-    var explanation: String
+    var id: Int?
+    var title: String?
+    var video: String?
+    var duration: String?
+    var explanation: String?
+    static var NullLesson: Lesson = Lesson()
 }
 
 struct Test: Identifiable, Decodable {
