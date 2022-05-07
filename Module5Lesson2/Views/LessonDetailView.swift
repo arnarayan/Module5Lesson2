@@ -13,26 +13,40 @@ struct LessonDetailView: View {
 
     
     var body: some View {
-        
-        if let myLesson = model.selectedLesson {
-            let myVideo = myLesson.video
-            let url = URL(string: Constants.VideoUrl + myVideo!)
-            VStack {
+        let myLesson = model.selectedLesson
+
+        let myVideo = myLesson?.video ?? ""
+        let url = URL(string: Constants.VideoUrl + myVideo)
+        VStack {
+            if (url != nil) {
                 VideoPlayer(player: AVPlayer(url: url!))
-                    .cornerRadius(10)
+                
                 // Description
                 
                 // Next Lesson Button
                 if (model.hasNextLesson()) {
-                    Button(action: {
-                        model.beginLesson(model.currentLessonIndex+1)
-                    }, label: {
-                            Text("Next Lesson")
-                    })
-                }
+                    
+                    let nextTitle = model.selectedModule!.content.lessons[model.currentLessonIndex + 1].title
+                    ZStack {
+                        Rectangle().padding().foregroundColor(Color.green)
+                            .cornerRadius(30)
+                            .shadow(color: .gray, radius: 10)
+                            .padding()
+                            .frame(height: 100)
+                        Button(action: {
+                            model.beginLesson(model.currentLessonIndex+1)
+                        }, label: {
+                            Text("Next Lesson:" + nextTitle!).foregroundColor(Color.white).bold()
+                        })
+                    }
 
+                }
             }
+            
+ 
+
         }
+
         
         
         

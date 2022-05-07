@@ -18,13 +18,10 @@ struct LessonListView: View {
                         ForEach(0..<myModule.content.lessons.count) { index in
                             NavigationLink(
                                 destination:
-                                    LessonDetailView()
-                                    .onAppear(perform: {
+                                    LessonDetailView().onAppear(perform: {
                                         viewModel.beginLesson(index)
-                                    
                                     }),
                                 label: {
-                                    
                                     LessonLinkCard(lesson: (viewModel.selectedModule?.content.lessons[index])!)
                                     
                                 })

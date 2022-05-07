@@ -28,21 +28,25 @@ class ContentModel: ObservableObject {
 
     
     func beginModule(_ moduleId: Int) {
-        for index in 0..<modules.count {
-            if modules[index].id == moduleId {
-                currentModuleIndex = index
+        
+        let count = 0...self.modules.count
+        
+        for index in count {
+            if self.modules[index].id == moduleId {
+                self.currentModuleIndex = index
                 break
             }
         }
-        selectedModule = modules[currentModuleIndex]
+        self.selectedModule = self.modules[self.currentModuleIndex]
     }
     
     func beginLesson(_ lessonIndex: Int) {
-        if (lessonIndex < selectedModule!.content.lessons.count) {
-            currentLessonIndex = lessonIndex
+        if (lessonIndex < self.selectedModule!.content.lessons.count) {
+            self.currentLessonIndex = lessonIndex
         }
 
-        selectedLesson = selectedModule?.content.lessons[currentLessonIndex]
+        self.selectedLesson = self.selectedModule?.content.lessons[self.currentLessonIndex]
+         
     }
     
     func hasNextLesson() -> Bool {
