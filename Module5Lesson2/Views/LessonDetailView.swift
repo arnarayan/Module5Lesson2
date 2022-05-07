@@ -14,23 +14,23 @@ struct LessonDetailView: View {
     
     var body: some View {
         
-        if model.currentLesson != nil {
-            let myVideo = model.currentLesson?.video ?? ""
-            let url = URL(string: Constants.VideoUrl + myVideo)
+        if let myLesson = model.selectedLesson {
+            let myVideo = myLesson.video
+            let url = URL(string: Constants.VideoUrl + myVideo!)
             VStack {
                 VideoPlayer(player: AVPlayer(url: url!))
                     .cornerRadius(10)
                 // Description
                 
                 // Next Lesson Button
-                Button(action: {
-                    model.currentLesson = model.nextLesson
-                }, label: {
-                    if (model.nextLesson != nil) {
-                        Text("Next Lesson")
-                    }
-                    
-                })
+                if (model.hasNextLesson()) {
+                    Button(action: {
+                        model.beginLesson(model.currentLessonIndex+1)
+                    }, label: {
+                            Text("Next Lesson")
+                    })
+                }
+
             }
         }
         

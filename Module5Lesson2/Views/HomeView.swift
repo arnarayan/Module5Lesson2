@@ -20,8 +20,19 @@ struct HomeView: View {
                     }.padding().font(Font.custom("Avenir Heavy", size: 16))
                     VStack {
                         ForEach(model.modules) {mod in
-                            NavigationLink(destination:LessonListView(lessons: mod.content.lessons), label: {Card(mod: mod, type: "content")})
-                            NavigationLink(destination:LessonListView(lessons: mod.content.lessons), label: {Card(mod: mod, type: "test")})
+                            NavigationLink(destination:LessonListView().onAppear(perform: {
+                                model.beginModule(mod.id)
+                            }),
+                               label: {
+                                Card(mod: mod, type: "content")
+                            })
+                            NavigationLink(destination:LessonListView().onAppear(perform: {
+                                model.beginModule(mod.id)
+                            }),
+                               label: {
+                                Card(mod: mod, type: "test")
+                                
+                            })
                         }
                     }
                     Spacer()

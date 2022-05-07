@@ -9,8 +9,13 @@ import Foundation
 
 class ContentModel: ObservableObject {
     @Published var modules = [Module]()
-    @Published var nextLesson: Lesson?
-    @Published var currentLesson: Lesson?
+    @Published var selectedModule: Module?
+    var currentModuleIndex = 0
+    
+    @Published var selectedLesson: Lesson?
+    var currentLessonIndex = 0
+    
+
     
     var style: Data?
     
@@ -18,16 +23,33 @@ class ContentModel: ObservableObject {
     init() {
         self.modules = DataService.getLocalData()
         self.style = DataService.getStyleData()
-        self.nextLesson = Lesson.NullLesson
-        self.currentLesson = Lesson.NullLesson
+
+    }
+
+    
+    func beginModule(_ moduleId: Int) {
+        for index in 0..<modules.count {
+            if modules[index].id == moduleId {
+                currentModuleIndex = index
+                break
+            }
+        }
+        selectedModule = modules[currentModuleIndex]
     }
     
-    func setNextLesson(lesson: Lesson) {
-        self.nextLesson = lesson
+    func beginLesson(_ lessonIndex: Int) {
+        if (lessonIndex < selectedModule!.content.lessons.count) {
+            currentLessonIndex = lessonIndex
+        }
+
+        selectedLesson = selectedModule?.content.lessons[currentLessonIndex]
     }
     
-    func setCurrentLesson(lesson: Lesson) {
-        self.currentLesson = lesson
+    func hasNextLesson() -> Bool {
+        if let myModule = self.selectedModule {
+            return currentLessonIndex+1 < myModule.content.lessons.count
+        }
+        return false;
     }
     
     
