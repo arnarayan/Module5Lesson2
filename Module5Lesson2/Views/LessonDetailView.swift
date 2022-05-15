@@ -10,7 +10,6 @@ import AVKit
 
 struct LessonDetailView: View {
     @EnvironmentObject var model: ContentModel
-
     
     var body: some View {
         let myLesson = model.selectedLesson
@@ -22,17 +21,13 @@ struct LessonDetailView: View {
                 VideoPlayer(player: AVPlayer(url: url!))
                 
                 // Description
-                
+                CodeTextView()
                 // Next Lesson Button
                 if (model.hasNextLesson()) {
                     
                     let nextTitle = model.selectedModule!.content.lessons[model.currentLessonIndex + 1].title
                     ZStack {
-                        Rectangle().padding().foregroundColor(Color.green)
-                            .cornerRadius(30)
-                            .shadow(color: .gray, radius: 10)
-                            .padding()
-                            .frame(height: 100)
+                        RectangleCard(color: Color.green).frame(height: 100)
                         Button(action: {
                             model.beginLesson(model.currentLessonIndex+1)
                         }, label: {
@@ -41,11 +36,21 @@ struct LessonDetailView: View {
                     }
 
                 }
+                else {
+                    ZStack {
+                        RectangleCard(color: Color.green).frame(height: 100)
+                        Button(action: {
+                            model.selectedTag = nil
+                        }, label: {
+                            Text("Complete Lesson").foregroundColor(Color.white).bold()
+                        })
+                    }
+                }
             }
             
  
 
-        }
+        }.navigationBarTitle(myLesson?.title ?? "")
 
         
         

@@ -20,15 +20,23 @@ struct HomeView: View {
                     }.padding().font(Font.custom("Avenir Heavy", size: 16))
                     VStack {
                         ForEach(model.modules) {mod in
-                            NavigationLink(destination:LessonListView().onAppear(perform: {
+                            NavigationLink(
+                                destination:LessonListView()
+                                    .onAppear(perform: {
                                 model.beginModule(mod.id)
                             }),
+                                tag:100,
+                                selection: $model.selectedTag,
                                label: {
                                 Card(mod: mod, type: "content")
                             })
-                            NavigationLink(destination:LessonListView().onAppear(perform: {
+                            NavigationLink(
+                                destination:LessonListView()
+                                    .onAppear(perform: {
                                 model.beginModule(mod.id)
                             }),
+                                tag:200,
+                                selection: $model.selectedTag,
                                label: {
                                 Card(mod: mod, type: "test")
                                 
