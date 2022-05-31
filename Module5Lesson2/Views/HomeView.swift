@@ -31,9 +31,9 @@ struct HomeView: View {
                                 Card(mod: mod, type: "content")
                             })
                             NavigationLink(
-                                destination:LessonListView()
+                                destination:TestView()
                                     .onAppear(perform: {
-                                model.beginModule(mod.id)
+                                        model.beginTest(mod.id)
                             }),
                                 tag:200,
                                 selection: $model.selectedTag,

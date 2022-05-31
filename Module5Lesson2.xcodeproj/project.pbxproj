@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		00092AA6282CA6020083939C /* CodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00092AA5282CA6020083939C /* CodeTextView.swift */; };
 		00092AC82830A65D0083939C /* RectangleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00092AC72830A65D0083939C /* RectangleCard.swift */; };
+		00092AE628440C200083939C /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00092AE528440C200083939C /* TestView.swift */; };
 		000BDC54281A37B600630134 /* LessonLinkCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000BDC53281A37B600630134 /* LessonLinkCard.swift */; };
 		000BDC56281A3D2F00630134 /* LessonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000BDC55281A3D2F00630134 /* LessonListView.swift */; };
 		000BDC58281C51AD00630134 /* LessonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000BDC57281C51AD00630134 /* LessonDetailView.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		00092AA5282CA6020083939C /* CodeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTextView.swift; sourceTree = "<group>"; };
 		00092AC72830A65D0083939C /* RectangleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCard.swift; sourceTree = "<group>"; };
+		00092AE528440C200083939C /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		000BDC53281A37B600630134 /* LessonLinkCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonLinkCard.swift; sourceTree = "<group>"; };
 		000BDC55281A3D2F00630134 /* LessonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonListView.swift; sourceTree = "<group>"; };
 		000BDC57281C51AD00630134 /* LessonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonDetailView.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				000BDC53281A37B600630134 /* LessonLinkCard.swift */,
 				00092AA5282CA6020083939C /* CodeTextView.swift */,
 				00092AC72830A65D0083939C /* RectangleCard.swift */,
+				00092AE528440C200083939C /* TestView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				000BDC54281A37B600630134 /* LessonLinkCard.swift in Sources */,
 				00092AC82830A65D0083939C /* RectangleCard.swift in Sources */,
 				004488592810F4B600640D0A /* DataService.swift in Sources */,
+				00092AE628440C200083939C /* TestView.swift in Sources */,
 				00092AA6282CA6020083939C /* CodeTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

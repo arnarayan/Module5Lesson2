@@ -9,15 +9,24 @@ import Foundation
 
 class ContentModel: ObservableObject {
     @Published var modules = [Module]()
+    
+    // selected Module
     @Published var selectedModule: Module?
     var currentModuleIndex = 0
     
+    
+    // selected lesson
     @Published var selectedLesson: Lesson?
     var currentLessonIndex = 0
     
-    @Published var lessonDescription = NSAttributedString()
+    // selected question
+    @Published var selectedQuestion: Question?
+    var currentQuestionIndex = 0
+    
+    @Published var codeTextView = NSAttributedString()
     
     @Published var selectedTag: Int?
+    @Published var selectedTestTag: Int?
     
     var style: Data?
     
@@ -48,7 +57,7 @@ class ContentModel: ObservableObject {
         }
 
         self.selectedLesson = self.selectedModule?.content.lessons[self.currentLessonIndex]
-        self.lessonDescription = addStyling(self.selectedLesson?.explanation ?? "") 
+        self.codeTextView = addStyling(self.selectedLesson?.explanation ?? "") 
          
     }
     
@@ -57,6 +66,17 @@ class ContentModel: ObservableObject {
             return currentLessonIndex+1 < myModule.content.lessons.count
         }
         return false;
+    }
+    
+    func beginTest(_ moduleId:Int) {
+        // Set the current module
+        beginModule(moduleId)
+        // set the current question
+        currentQuestionIndex = 0
+        if (selectedModule?.test.questions.count ?? 0 > 0) {
+            selectedQuestion = selectedModule?.test.questions[currentQuestionIndex]
+            self.codeTextView  = addStyling(self.selectedQuestion?.content ?? "")
+        }
     }
     
     
