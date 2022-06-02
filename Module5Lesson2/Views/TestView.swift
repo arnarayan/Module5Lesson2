@@ -21,7 +21,7 @@ struct TestView: View {
                 Text("Question \(model.currentQuestionIndex + 1) of \(model.selectedModule?.test.questions.count ?? 0)").padding()
                 CodeTextView().padding(.horizontal, 20)
                 ScrollView {
-                    VStack {
+                    VStack(spacing: 0) {
                         ForEach(0..<model.selectedQuestion!.answers.count, id:\.self) { index in
                             Button(action: {
                                 self.selectedAnswerIndex = index
@@ -55,21 +55,52 @@ struct TestView: View {
                         }
                     }
                 }
-                Button(action: {
-                    if (selectedAnswerIndex == model.selectedQuestion!.correctIndex) {
-                        numCorrect += 1
-                        self.isCorrectlyAnswered = true
-                    }
-                    self.submitted = true
-                }, label: {
-                    ZStack {
-                        
-                        RectangleCard(color: Color.green).frame(height: 100)
+                if (self.submitted == false) {
+                    Button(action: {
+                        if (selectedAnswerIndex == model.selectedQuestion!.correctIndex) {
+                            numCorrect += 1
+                            self.isCorrectlyAnswered = true
+                        }
+                        self.submitted = true
+                    }, label: {
+                        ZStack {
+                            
+                            RectangleCard(color: Color.green).frame(height: 100)
 
-                        Text("Submit Answer").foregroundColor(Color.white).bold()
-                            .padding()
-                    }
-                }).disabled(selectedAnswerIndex == -1)
+                            Text("Submit Answer").foregroundColor(Color.white).bold()
+                                .padding()
+                        }
+                    }).disabled(selectedAnswerIndex == -1)
+                } else if (model.hasNextTest()) {
+                    Button(action: {
+                        model.nextTest()
+                        self.submitted = false
+                        selectedAnswerIndex = -1
+                    }, label: {
+                        ZStack {
+                            
+                            RectangleCard(color: Color.green).frame(height: 100)
+
+                            Text("Next Question").foregroundColor(Color.white).bold()
+                                .padding()
+                        }
+                    })
+                } else {
+                    Button(action: {
+                        //model.nextTest()
+                        //self.submitted = false
+                        //selectedAnswerIndex = -1
+                    }, label: {
+                        ZStack {
+                            
+                            RectangleCard(color: Color.green).frame(height: 100)
+
+                            Text("Finish Test").foregroundColor(Color.white).bold()
+                                .padding()
+                        }
+                    })
+                }
+
                 
             }.navigationTitle("\(model.selectedModule?.category ?? "") Test")
         }

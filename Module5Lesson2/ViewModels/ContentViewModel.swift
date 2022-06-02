@@ -68,6 +68,13 @@ class ContentModel: ObservableObject {
         return false;
     }
     
+    func hasNextTest() -> Bool {
+        if let myModule = self.selectedModule {
+            return currentQuestionIndex+1 < myModule.test.questions.count
+        }
+        return false;
+    }
+    
     func beginTest(_ moduleId:Int) {
         // Set the current module
         beginModule(moduleId)
@@ -77,6 +84,19 @@ class ContentModel: ObservableObject {
             selectedQuestion = selectedModule?.test.questions[currentQuestionIndex]
             self.codeTextView  = addStyling(self.selectedQuestion?.content ?? "")
         }
+    }
+    
+    func nextTest() {
+        if self.hasNextTest() {
+            currentQuestionIndex += 1
+            selectedQuestion = selectedModule?.test.questions[currentQuestionIndex]
+            self.codeTextView = addStyling(self.selectedQuestion?.content ?? "")
+        }
+        else {
+            currentQuestionIndex = 0
+            selectedQuestion = nil
+        }
+
     }
     
     
