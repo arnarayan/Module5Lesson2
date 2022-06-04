@@ -11,12 +11,13 @@ struct TestView: View {
     
     @EnvironmentObject var model: ContentModel
     @State var selectedAnswerIndex = -1
-    @State var numCorrect = 0
+    @State var numCorrect:Int = 0
     @State var submitted = false
     @State var isCorrectlyAnswered = false
+    @State var isEndGame = false
     var body: some View {
         
-        if model.selectedModule != nil {
+        if model.selectedModule != nil && self.isEndGame == false {
             VStack(alignment:.leading, spacing: 0) {
                 Text("Question \(model.currentQuestionIndex + 1) of \(model.selectedModule?.test.questions.count ?? 0)").padding()
                 CodeTextView().padding(.horizontal, 20)
@@ -71,10 +72,11 @@ struct TestView: View {
                                 .padding()
                         }
                     }).disabled(selectedAnswerIndex == -1)
-                } else if (model.hasNextTest()) {
+                } else if (model.hasNextTest() && self.isEndGame == false && self.submitted == true) {
                     Button(action: {
                         model.nextTest()
                         self.submitted = false
+                        self.isCorrectlyAnswered = false
                         selectedAnswerIndex = -1
                     }, label: {
                         ZStack {
@@ -87,26 +89,30 @@ struct TestView: View {
                     })
                 } else {
                     Button(action: {
-                        //model.nextTest()
-                        //self.submitted = false
-                        //selectedAnswerIndex = -1
+                        self.isEndGame = true
                     }, label: {
                         ZStack {
                             
                             RectangleCard(color: Color.green).frame(height: 100)
 
-                            Text("Finish Test").foregroundColor(Color.white).bold()
+                            Text("See Your Results").foregroundColor(Color.white).bold()
                                 .padding()
                         }
                     })
                 }
+                
+
 
                 
             }.navigationTitle("\(model.selectedModule?.category ?? "") Test")
         }
-        else {
+        else if (model.selectedModule == nil) {
             ProgressView()
-        }   
+        }
+        
+        if (self.isEndGame == true) {
+            TestResultView(numResults: self.numCorrect)
+        }
     }
 }
 

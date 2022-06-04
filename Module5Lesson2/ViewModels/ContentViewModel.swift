@@ -29,6 +29,7 @@ class ContentModel: ObservableObject {
     @Published var selectedTestTag: Int?
     
     var style: Data?
+    var numberOfCorrectAnswers = 0
     
     
     init() {
