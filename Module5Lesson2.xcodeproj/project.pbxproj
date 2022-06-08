@@ -25,6 +25,8 @@
 		00294EED280FBC6C00588996 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00294EEC280FBC6C00588996 /* Lesson.swift */; };
 		004488592810F4B600640D0A /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004488582810F4B600640D0A /* DataService.swift */; };
 		0044885B2813AB1400640D0A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0044885A2813AB1400640D0A /* Card.swift */; };
+		00B691D1285108C6001B805C /* UiSelections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B691D0285108C6001B805C /* UiSelections.swift */; };
+		00B691D328512F1B001B805C /* TempTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B691D228512F1B001B805C /* TempTestView.swift */; };
 		00CC4DFB284AF78600B3DAA9 /* TestResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CC4DFA284AF78600B3DAA9 /* TestResultView.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +50,8 @@
 		00294EEC280FBC6C00588996 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		004488582810F4B600640D0A /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		0044885A2813AB1400640D0A /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		00B691D0285108C6001B805C /* UiSelections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiSelections.swift; sourceTree = "<group>"; };
+		00B691D228512F1B001B805C /* TempTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempTestView.swift; sourceTree = "<group>"; };
 		00CC4DFA284AF78600B3DAA9 /* TestResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +137,7 @@
 				00092AC72830A65D0083939C /* RectangleCard.swift */,
 				00092AE528440C200083939C /* TestView.swift */,
 				00CC4DFA284AF78600B3DAA9 /* TestResultView.swift */,
+				00B691D228512F1B001B805C /* TempTestView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				00294EEC280FBC6C00588996 /* Lesson.swift */,
+				00B691D0285108C6001B805C /* UiSelections.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -255,6 +261,7 @@
 				000BDC56281A3D2F00630134 /* LessonListView.swift in Sources */,
 				00294ED2280FA8C300588996 /* Module5Lesson2App.swift in Sources */,
 				000BDC5D281D8E6D00630134 /* Constants.swift in Sources */,
+				00B691D1285108C6001B805C /* UiSelections.swift in Sources */,
 				00294EE7280FAC4300588996 /* ContentViewModel.swift in Sources */,
 				00294EED280FBC6C00588996 /* Lesson.swift in Sources */,
 				000BDC54281A37B600630134 /* LessonLinkCard.swift in Sources */,
@@ -262,6 +269,7 @@
 				004488592810F4B600640D0A /* DataService.swift in Sources */,
 				00092AE628440C200083939C /* TestView.swift in Sources */,
 				00092AA6282CA6020083939C /* CodeTextView.swift in Sources */,
+				00B691D328512F1B001B805C /* TempTestView.swift in Sources */,
 				00CC4DFB284AF78600B3DAA9 /* TestResultView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

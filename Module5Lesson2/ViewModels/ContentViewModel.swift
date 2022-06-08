@@ -8,7 +8,10 @@
 import Foundation
 
 class ContentModel: ObservableObject {
-    @Published var modules = [Module]()
+    var dataService = DataService()
+    var uiSelections = UiSelections()
+    @Published var modules: [Module]?
+    var tempModules: [Module]?
     
     // selected Module
     @Published var selectedModule: Module?
@@ -31,25 +34,76 @@ class ContentModel: ObservableObject {
     var style: Data?
     var numberOfCorrectAnswers = 0
     
+    var remoteDataUrl: String = ""
+    var session: URLSession = URLSession.shared
+    
     
     init() {
-        self.modules = DataService.getLocalData()
-        self.style = DataService.getStyleData()
+        self.tempModules = self.dataService.getLocalData()
+        self.style = self.dataService.getStyleData()
+        self.getRemoteData()
+        
+        
+        
 
+    }
+    
+    func getRemoteData()  {
+        self.remoteDataUrl = "https://arnarayan.github.io/learningapp-data/data2.json"
+        let sendingUrl = URL(string: self.remoteDataUrl)
+        var request = URLRequest(url: sendingUrl!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
+        request.allHTTPHeaderFields = setHeaders()
+        request.httpMethod = "GET"
+
+        let dataTask = self.session.dataTask(with: request) { (data, response, error) in
+            self.responseHandler(data: data, response: response, error: error)
+        }
+        dataTask.resume()
+
+
+    }
+    
+    func setHeaders() -> [String:String] {
+        return [:]
+    }
+    
+    func responseHandler(data:Data?, response: URLResponse?, error: Error?) {
+        
+        if (error == nil && data != nil) {
+            
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode([Module].self, from: data!)
+                DispatchQueue.main.async {
+                    self.tempModules! += response
+                    self.modules = self.tempModules
+                    
+                }
+                
+                
+            }
+            catch {
+                print("could not serialize the response")
+            }
+            
+        }
     }
 
     
     func beginModule(_ moduleId: Int) {
-        
-        let count = 0...self.modules.count
-        
-        for index in count {
-            if self.modules[index].id == moduleId {
-                self.currentModuleIndex = index
-                break
+        if (self.modules != nil && self.selectedModule == nil) {
+            let count = 0...self.modules!.count
+            
+            for index in count {
+                if self.modules![index].id == moduleId {
+                    self.currentModuleIndex = index
+                    break
+                }
             }
+            self.selectedModule = self.modules![self.currentModuleIndex]
         }
-        self.selectedModule = self.modules[self.currentModuleIndex]
+        
+
     }
     
     func beginLesson(_ lessonIndex: Int) {

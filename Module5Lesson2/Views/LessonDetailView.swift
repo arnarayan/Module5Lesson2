@@ -41,6 +41,7 @@ struct LessonDetailView: View {
                         RectangleCard(color: Color.green).frame(height: 100)
                         Button(action: {
                             model.selectedTag = nil
+                            model.selectedModule = nil
                         }, label: {
                             Text("Complete Lesson").foregroundColor(Color.white).bold()
                         })

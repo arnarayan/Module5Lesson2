@@ -8,9 +8,15 @@
 import Foundation
 
 
-class DataService {
+class DataService: ObservableObject {
     
-    static func getLocalData() -> [Module] {
+    var remoteDataUrl: String = ""
+    var session: URLSession = URLSession.shared
+   
+    
+
+    
+    func getLocalData() -> [Module] {
         // Get path to the json file within the app bundle
         
         if let path = Bundle.main.path(forResource: "data", ofType: "json") {
@@ -35,7 +41,10 @@ class DataService {
         return [Module]()
     }
     
-    static func getStyleData() -> Data {
+
+    
+    
+   func getStyleData() -> Data {
         if let path = Bundle.main.path(forResource: "style", ofType: "html") {
             let fileUrl = URL(fileURLWithPath: path)
             
